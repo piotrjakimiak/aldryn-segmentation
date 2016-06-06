@@ -31,6 +31,11 @@ class SegmentLimitPlugin(SegmentPluginBase):
             context, instance)
         return context
 
+    @classmethod
+    def get_child_plugin_candidates(cls, slot, page):
+        from cms.plugin_pool import plugin_pool
+        return plugin_pool.get_all_plugins(page=page)
+
 
     def is_context_appropriate(self, context, instance):
         '''
